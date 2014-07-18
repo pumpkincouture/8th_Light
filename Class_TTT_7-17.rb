@@ -2,6 +2,10 @@
 
 #A breakdown of classes. Still a simple loop, but the classes should start to interact with each other.
 
+#Here's what we want.
+
+#A breakdown of classes. Still a simple loop, but the classes should start to interact with each other.
+
 class Game
     
     attr_accessor :board, :no_space
@@ -14,14 +18,14 @@ class Game
     "6"=>"6", "7"=>"7", "8"=>"8", "9"=>"9"}
     end
     
-    @no_space=8
+    @@no_space=8
     
     def welcome
         puts "Welcome to a Simpler Tic Tac Toe. The computer will go first."
       @board["5"]="X"
       puts "The computer chose space number 5."
       display_board
-      @no_space -= 1
+      @@no_space -= 1
     end
         
     def display_board
@@ -33,7 +37,8 @@ class Game
     end
 
     def game_over?
-        @no_space<=0
+        # puts @@no_space
+        @@no_space<=0
     end
     
  end
@@ -54,7 +59,7 @@ class Game
     @board[pick_one]="X"
     display_board
     puts "Computer chose space #{pick_one}."
-    @no_space -= 1
+    @@no_space -= 1
     end
 
 
@@ -70,8 +75,8 @@ class Game
           @board[answer]="O"
           display_board
           puts "You've placed an 'O' in number #{answer}."
-          @no_space -= 1
-          puts @no_space
+          @@no_space -= 1
+        #   puts @@no_space
         end
     end
 
@@ -87,6 +92,10 @@ end
 new_game=Game.new
 player=Players.new
 player.welcome
+
+# player.user_turn
+# new_game.game_over?
+# player.game_over?
 
 until new_game.game_over?
 player.user_turn
